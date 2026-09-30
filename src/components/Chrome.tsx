@@ -3,7 +3,7 @@ import { api } from '../api/client';
 import { fmtTime } from '../lib/format';
 import * as A from '../state/actions';
 import { SCRIPT, jump, playDemo, stopDemo } from '../state/demo';
-import { currentPage, useApp, type LenderPage, type MerchantPage } from '../state/store';
+import { currentPage, setDemoSpeed, togglePauseDemo, toggleTheme, useApp, type LenderPage, type MerchantPage } from '../state/store';
 import { Icon, Logo } from './ui';
 
 function Clock({ offsetDays }: { offsetDays: number }) {
@@ -29,8 +29,23 @@ export function TopBar() {
       <span className="chip" title="Set VITE_USE_MOCK=false to call the real services">API: {api.mode}</span>
       <span className="spacer" />
       <Clock offsetDays={s.clockDays} />
+
+      {/* Light / Dark Mode Toggle */}
+      <button
+        data-always
+        className="theme-toggle"
+        onClick={toggleTheme}
+        title={`Switch to ${s.theme === 'dark' ? 'light' : 'dark'} mode`}
+        aria-label="Toggle light or dark theme"
+      >
+        <Icon name={s.theme === 'dark' ? 'sun' : 'moon'} />
+        <span className="theme-toggle-label">{s.theme === 'dark' ? 'Light' : 'Dark'}</span>
+      </button>
+
       <button className="btn btn-ghost" onClick={() => A.reset()}>Reset</button>
-      <button className="btn btn-primary" onClick={() => playDemo()} disabled={s.playing}>▶ Play demo</button>
+      <button className="btn btn-primary demo-btn" onClick={() => playDemo()} disabled={s.playing}>
+        {s.playing ? '▶ Demo running...' : '▶ Play demo'}
+      </button>
     </header>
   );
 }
@@ -96,13 +111,62 @@ export function Sidebar() {
 }
 
 export function Narrator() {
-  const { narr } = useApp();
+  const { narr, playing, demoPaused, demoSpeed } = useApp();
   if (!narr) return null;
   return (
     <div className="narr" role="status">
-      <div className="t"><small>{narr.done ? 'Done' : `Step ${narr.i + 1} of ${narr.n}`}</small>{narr.text}</div>
-      <div className="prog">{[...Array(narr.n)].map((_, i) => <i key={i} className={i <= narr.i ? 'on' : ''} />)}</div>
-      <button data-always onClick={stopDemo}>{narr.done ? 'Close' : 'Stop'}</button>
+      <div className="t">
+        <small>{narr.done ? 'Demo complete' : `Step ${narr.i + 1} of ${narr.n} · Paced Demo`}</small>
+        {narr.text}
+      </div>
+      <div className="prog" title={`Step ${narr.i + 1} of ${narr.n}`}>
+        {[...Array(narr.n)].map((_, i) => <i key={i} className={i <= narr.i ? 'on' : ''} />)}
+      </div>
+
+      {!narr.done && playing && (
+        <div className="narr-ctrls">
+          <button
+            data-always
+            className={`narr-btn${demoPaused ? ' paused' : ''}`}
+            onClick={togglePauseDemo}
+            title={demoPaused ? 'Resume demo playback' : 'Pause demo step to explain or inspect'}
+          >
+            <Icon name={demoPaused ? 'play' : 'pause'} />
+            <span>{demoPaused ? 'Resume' : 'Pause'}</span>
+          </button>
+
+          <div className="speed-pills" role="group" aria-label="Demo Speed">
+            <button
+              data-always
+              className={`narr-speed-btn${demoSpeed === 0.75 ? ' active' : ''}`}
+              onClick={() => setDemoSpeed(0.75)}
+              title="Relaxed / Presentation pace (slower)"
+            >
+              0.75x
+            </button>
+            <button
+              data-always
+              className={`narr-speed-btn${demoSpeed === 1 ? ' active' : ''}`}
+              onClick={() => setDemoSpeed(1)}
+              title="Comfortable pace (recommended)"
+            >
+              1x
+            </button>
+            <button
+              data-always
+              className={`narr-speed-btn${demoSpeed === 1.5 ? ' active' : ''}`}
+              onClick={() => setDemoSpeed(1.5)}
+              title="Brisk pace"
+            >
+              1.5x
+            </button>
+          </div>
+        </div>
+      )}
+
+      <button data-always className="narr-close-btn" onClick={stopDemo}>
+        {narr.done ? 'Close' : 'Stop'}
+      </button>
     </div>
   );
 }
