@@ -27,6 +27,7 @@ export function OptionsPage() {
           </span>
         </div>
         <p lang={s.lang}>{explanation[s.lang]}</p>
+        <p className="muted" style={{ margin: '0 0 8px' }}>Recommended based on your selected need and available service information. A match is not an approval.</p>
         <small>
           {explanation.source === 'llm' ? 'Written by AI from the structured results · numbers checked against the input' : 'Template explanation (AI output unavailable or failed the number check)'}
         </small>
