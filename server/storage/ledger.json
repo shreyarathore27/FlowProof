@@ -1,0 +1,225 @@
+[
+  {
+    "n": 0,
+    "fn": "ChannelConfig",
+    "status": "VALID",
+    "orgs": [
+      "PlatformOrg",
+      "VerifierOrg",
+      "LenderOrg"
+    ],
+    "time": "2026-09-30T11:57:54.648Z",
+    "fields": {
+      "channel": "flowproof-channel",
+      "chaincode": "flowproof v0.3 (Go)",
+      "endorsement": "AnchorSnapshot: Platform AND Verifier"
+    },
+    "prev": "0000000000000000000000000000000000000000000000000000000000000000",
+    "hash": "d0e2ff772ead3595bb2342835c8dc4f5696ca849037bc58504d239eafa41e342",
+    "txId": "d0e2ff772e"
+  },
+  {
+    "n": 1,
+    "fn": "GrantConsent",
+    "status": "VALID",
+    "orgs": [
+      "PlatformOrg"
+    ],
+    "time": "2026-09-30T13:57:54.694Z",
+    "fields": {
+      "consentId": "CNS-RAV-35DF6EF1",
+      "merchantId": "MID-F75F6619",
+      "grantedTo": "[LenderOrg]",
+      "scope": "[credit-assessment]",
+      "dataTypes": "upi.credit,upi.debit (182d)",
+      "expiresAt": "2026-12-29"
+    },
+    "userId": "ravi",
+    "prev": "d0e2ff772ead3595bb2342835c8dc4f5696ca849037bc58504d239eafa41e342",
+    "hash": "2317d7d67c129ed6bc6c7fdeae6dab41c74afcff3f4770fab3a2e2cdae8ceaea",
+    "txId": "2317d7d67c"
+  },
+  {
+    "n": 2,
+    "fn": "AnchorSnapshot",
+    "status": "VALID",
+    "orgs": [
+      "PlatformOrg"
+    ],
+    "time": "2026-09-30T13:57:54.706Z",
+    "fields": {
+      "snapshotId": "SNP-43AD80",
+      "snapshotHash": "4712b715512a5f4e5842a764f08ef344c89785c4541cd4158dcb7e9444eb7e5e",
+      "ruleSetVersion": "66dc68c85d9fa4a7",
+      "consentId": "CNS-RAV-35DF6EF1"
+    },
+    "userId": "ravi",
+    "prev": "2317d7d67c129ed6bc6c7fdeae6dab41c74afcff3f4770fab3a2e2cdae8ceaea",
+    "hash": "980b5732b7e04bb6615309c079876b6e7890b469e44ec8442f065f5d5af8a299",
+    "txId": "980b5732b7"
+  },
+  {
+    "n": 3,
+    "fn": "AnchorSnapshot",
+    "status": "VALID",
+    "orgs": [
+      "PlatformOrg",
+      "VerifierOrg"
+    ],
+    "time": "2026-09-30T13:57:54.709Z",
+    "fields": {
+      "snapshotId": "SNP-43AD80",
+      "snapshotHash": "4712b715512a5f4e5842a764f08ef344c89785c4541cd4158dcb7e9444eb7e5e",
+      "consentId": "CNS-RAV-35DF6EF1"
+    },
+    "prev": "980b5732b7e04bb6615309c079876b6e7890b469e44ec8442f065f5d5af8a299",
+    "hash": "720389004861aecf9fedb9c537213f247634e1ede7a56e54b205bce7602afe09",
+    "txId": "7203890048"
+  },
+  {
+    "n": 4,
+    "fn": "RequestData",
+    "status": "ALLOWED",
+    "orgs": [
+      "LenderOrg"
+    ],
+    "time": "2026-09-30T13:57:54.729Z",
+    "fields": {
+      "consentId": "CNS-RAV-35DF6EF1",
+      "purpose": "credit-assessment",
+      "dataRef": "ref://platform/snapshots/SNP-43AD80"
+    },
+    "prev": "720389004861aecf9fedb9c537213f247634e1ede7a56e54b205bce7602afe09",
+    "hash": "ef370eb786fdebf9c5fa1cd8d19e5f2b288bc9a654310c712a30595ec384fb20",
+    "txId": "ef370eb786"
+  },
+  {
+    "n": 5,
+    "fn": "PostOffer",
+    "status": "VALID",
+    "orgs": [
+      "LenderOrg"
+    ],
+    "time": "2026-09-30T13:57:54.738Z",
+    "fields": {
+      "offerId": "OFR-CA216B",
+      "consentId": "CNS-RAV-35DF6EF1",
+      "termsHash": "c5ba47d4acb491df386aaf18060236c9e70859efa740f1efcfba233cfec34b0f",
+      "terms": "private collection PlatformLenderPDC"
+    },
+    "userId": "ravi",
+    "prev": "ef370eb786fdebf9c5fa1cd8d19e5f2b288bc9a654310c712a30595ec384fb20",
+    "hash": "f126a428275676e2befa92059fd20610beb3f2cfef835292c9b65fea187cf196",
+    "txId": "f126a42827"
+  },
+  {
+    "n": 6,
+    "fn": "AcceptOffer",
+    "status": "VALID",
+    "orgs": [
+      "PlatformOrg"
+    ],
+    "time": "2026-09-30T13:57:54.747Z",
+    "fields": {
+      "offerId": "OFR-CA216B",
+      "agreementId": "AGR-4AC57B",
+      "termsHash": "c5ba47d4acb491df386aaf18060236c9e70859efa740f1efcfba233cfec34b0f"
+    },
+    "userId": "ravi",
+    "prev": "f126a428275676e2befa92059fd20610beb3f2cfef835292c9b65fea187cf196",
+    "hash": "43c4407273d77badea1c22323c8e9394afa79219b7d0eaf70ac62bcc7961de64",
+    "txId": "43c4407273"
+  },
+  {
+    "n": 7,
+    "fn": "RecordMandate",
+    "status": "VALID",
+    "orgs": [
+      "PlatformOrg"
+    ],
+    "time": "2026-09-30T13:57:54.752Z",
+    "fields": {
+      "agreementId": "AGR-4AC57B",
+      "mandateRef": "MND-660162",
+      "frequency": "WEEKLY",
+      "provider": "mock-upi-autopay"
+    },
+    "userId": "ravi",
+    "prev": "43c4407273d77badea1c22323c8e9394afa79219b7d0eaf70ac62bcc7961de64",
+    "hash": "c239ff1a3df0bd549d05ba90b8cebb1c9012ebaa0e601779513a3a1a4155f7fb",
+    "txId": "c239ff1a3d"
+  },
+  {
+    "n": 8,
+    "fn": "RecordRepayment",
+    "status": "VALID",
+    "orgs": [
+      "PlatformOrg"
+    ],
+    "time": "2026-09-30T13:57:54.756Z",
+    "fields": {
+      "agreementId": "AGR-4AC57B",
+      "mandateRef": "MND-660162",
+      "cycle": "1",
+      "result": "SUCCESS"
+    },
+    "userId": "ravi",
+    "prev": "c239ff1a3df0bd549d05ba90b8cebb1c9012ebaa0e601779513a3a1a4155f7fb",
+    "hash": "11bddd3e607616a1267026d1023238998406d1ed389f33403bf9e8bb3edbe22e",
+    "txId": "11bddd3e60"
+  },
+  {
+    "n": 9,
+    "fn": "RecordRepayment",
+    "status": "FAILED",
+    "orgs": [
+      "PlatformOrg"
+    ],
+    "time": "2026-09-30T13:57:54.760Z",
+    "fields": {
+      "agreementId": "AGR-4AC57B",
+      "mandateRef": "MND-660162",
+      "cycle": "2",
+      "result": "FAILED"
+    },
+    "reason": "Insufficient balance (simulated)",
+    "userId": "ravi",
+    "prev": "11bddd3e607616a1267026d1023238998406d1ed389f33403bf9e8bb3edbe22e",
+    "hash": "c2a8e6ec94c755da899df2c67bcdcdbd16b64679f51359778f947ccc6f311389",
+    "txId": "c2a8e6ec94"
+  },
+  {
+    "n": 10,
+    "fn": "RevokeConsent",
+    "status": "VALID",
+    "orgs": [
+      "PlatformOrg"
+    ],
+    "time": "2026-09-30T13:57:54.767Z",
+    "fields": {
+      "consentId": "CNS-RAV-35DF6EF1",
+      "offChain": "9,214 transactions deleted"
+    },
+    "userId": "ravi",
+    "prev": "c2a8e6ec94c755da899df2c67bcdcdbd16b64679f51359778f947ccc6f311389",
+    "hash": "fe591a93fb40d51340e59f618f6e4f98049b476966551b418ad09d05d839d016",
+    "txId": "fe591a93fb"
+  },
+  {
+    "n": 11,
+    "fn": "RequestData",
+    "status": "REFUSED",
+    "orgs": [
+      "LenderOrg"
+    ],
+    "time": "2026-09-30T13:57:54.794Z",
+    "fields": {
+      "consentId": "CNS-RAV-35DF6EF1",
+      "purpose": "credit-assessment"
+    },
+    "reason": "CONSENT_REVOKED: revoked by the merchant",
+    "prev": "fe591a93fb40d51340e59f618f6e4f98049b476966551b418ad09d05d839d016",
+    "hash": "52b81cf132ba70500fc4cd75555be034e5afdda566d3877206af5c4f96ddc0c1",
+    "txId": "52b81cf132"
+  }
+]

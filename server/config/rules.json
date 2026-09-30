@@ -1,0 +1,41 @@
+{
+  "signalCfg": {
+    "version": "signals-2026.09.1",
+    "regularity": { "strong": 0.85, "ok": 0.6 },
+    "trend": { "growing": 5, "shrinking": -5 },
+    "buffer": { "healthy": 14, "ok": 7 }
+  },
+  "rules": {
+    "version": "rules-2026.09.1",
+    "products": [
+      {
+        "id": "wc-line",
+        "name": "Working-capital line",
+        "blurb": "Up to ₹50,000 for stock, repaid weekly from UPI sales.",
+        "criteria": [
+          { "signal": "regularity", "min": 0.7, "label": "Days with payments received", "unit": "pct", "fix": "Accept UPI on more days each week. Small sales count too." },
+          { "signal": "bufferDays", "min": 10, "label": "Savings buffer", "unit": "days", "fix": "Leave a little of each day's sales in the account until it covers 10 days of spending." },
+          { "signal": "onTimeRepayments", "min": 3, "label": "On-time repayments on record", "unit": "count", "fix": "Pay a recurring savings plan on time for 3 months to build a record." }
+        ]
+      },
+      {
+        "id": "micro-ins",
+        "name": "Shop micro-insurance",
+        "blurb": "Cover for stock and fire damage, paid monthly.",
+        "criteria": [
+          { "signal": "activeDays", "min": 90, "label": "Days of payment activity", "unit": "days", "fix": "Keep taking UPI payments until you have 90 active days." },
+          { "signal": "regularity", "min": 0.5, "label": "Days with payments received", "unit": "pct", "fix": "Accept UPI on more days each week." }
+        ]
+      },
+      {
+        "id": "rd-plan",
+        "name": "Recurring savings plan",
+        "blurb": "Auto-save a small amount each day from UPI sales.",
+        "criteria": [
+          { "signal": "activeDays", "min": 60, "label": "Days of payment activity", "unit": "days", "fix": "Keep taking UPI payments until you have 60 active days." }
+        ]
+      }
+    ]
+  },
+  "lenderName": "Kosh Capital"
+}
