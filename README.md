@@ -2,8 +2,6 @@
 
 ### A verifiable eligibility and offer layer for payment-active, credit-invisible micro-merchants
 
-**Drunix Hackathon (NPCI × Citi) · Problem Statement 4: Financial Inclusion**
-
 > FlowProof turns a micro-merchant's consented payment history into explainable financial signals, matches them with relevant financial products, identifies eligibility gaps, and records the complete journey from consent to offer acceptance and repayment on a shared Drunix ledger.
 
 ---
