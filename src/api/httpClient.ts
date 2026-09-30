@@ -75,4 +75,14 @@ export class HttpClient implements ApiClient {
   requestData(input: DataRequestInput) { return this.post<DataRequestResult>(this.lenderBase, '/data-requests', input); }
   postOffer(input: { consentId: string; terms: OfferTerms }) { return this.post<Offer>(this.lenderBase, '/offers', input); }
   listAgreements() { return this.get<Agreement[]>(this.lenderBase, '/agreements'); }
+
+  // Demo controls wired to platform dev endpoints
+  readonly demo = {
+    reset: async () => {
+      await this.post(this.platformBase, '/dev/reset');
+    },
+    setClockOffsetDays: (days: number) => {
+      this.post(this.platformBase, '/dev/clock', { offsetDays: days }).catch(console.error);
+    },
+  };
 }

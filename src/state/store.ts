@@ -45,6 +45,9 @@ export interface AppState {
   toasts: { id: number; ev: LedgerEvent }[];
   narr: Narration | null;
   playing: boolean;
+  demoSpeed: number; // 0.75, 1, 1.5
+  demoPaused: boolean;
+  theme: 'light' | 'dark';
   clockDays: number;
   lang: 'en' | 'hi';
   filter: 'all' | 'refused';
@@ -58,20 +61,40 @@ export const freshUser = (): UserState => ({
   snapshot: null, matches: null, offer: null, agreement: null, revokeConfirm: false,
 });
 
-export const initialState = (profiles: MerchantProfile[] = []): AppState => ({
-  view: 'merchant',
-  pages: { merchant: 'consent', lender: 'desk' },
-  merchant: null,
-  profiles,
-  users: { ravi: freshUser(), meena: freshUser() },
-  lender: {
-    selected: 'ravi', purpose: 'credit-assessment', caller: 'LenderOrg',
-    results: { ravi: null, meena: null },
-    form: { amount: 50000, apr: 18, weeks: 26 },
-  },
-  applicants: [], agreements: [], ledger: [], freshBlocks: [], resultFresh: false, toasts: [],
-  narr: null, playing: false, clockDays: 0, lang: 'en', filter: 'all', forceFail: false, scrambleHash: null, error: null,
-});
+export const getStoredTheme = (): 'light' | 'dark' => {
+  if (typeof window === 'undefined') return 'light';
+  const saved = localStorage.getItem('flowproof_theme');
+  if (saved === 'light' || saved === 'dark') return saved;
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+
+export const applyThemeToDom = (theme: 'light' | 'dark') => {
+  if (typeof document !== 'undefined') {
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+};
+
+let activeTheme: 'light' | 'dark' = getStoredTheme();
+applyThemeToDom(activeTheme);
+
+export const initialState = (profiles: MerchantProfile[] = []): AppState => {
+  applyThemeToDom(activeTheme);
+  return {
+    view: 'merchant',
+    pages: { merchant: 'consent', lender: 'desk' },
+    merchant: null,
+    profiles,
+    users: { ravi: freshUser(), meena: freshUser() },
+    lender: {
+      selected: 'ravi', purpose: 'credit-assessment', caller: 'LenderOrg',
+      results: { ravi: null, meena: null },
+      form: { amount: 50000, apr: 18, weeks: 26 },
+    },
+    applicants: [], agreements: [], ledger: [], freshBlocks: [], resultFresh: false, toasts: [],
+    narr: null, playing: false, demoSpeed: 1, demoPaused: false, theme: activeTheme,
+    clockDays: 0, lang: 'en', filter: 'all', forceFail: false, scrambleHash: null, error: null,
+  };
+};
 
 // Tiny external store: actions read the latest state synchronously (no stale closures in the demo script).
 let state = initialState();
@@ -86,6 +109,25 @@ export function setState(patch: Partial<AppState> | ((s: AppState) => Partial<Ap
 export function setUser(userId: UserId, patch: Partial<UserState>) {
   setState((s) => ({ users: { ...s.users, [userId]: { ...s.users[userId], ...patch } } }));
 }
+export function toggleTheme() {
+  const next = activeTheme === 'dark' ? 'light' : 'dark';
+  setTheme(next);
+}
+export function setTheme(next: 'light' | 'dark') {
+  activeTheme = next;
+  if (typeof localStorage !== 'undefined') {
+    localStorage.setItem('flowproof_theme', next);
+  }
+  applyThemeToDom(next);
+  setState({ theme: next });
+}
+export function setDemoSpeed(speed: number) {
+  setState({ demoSpeed: speed });
+}
+export function togglePauseDemo() {
+  setState((s) => ({ demoPaused: !s.demoPaused }));
+}
+
 const subscribe = (l: () => void) => { listeners.add(l); return () => { listeners.delete(l); }; };
 
 export const useApp = () => useSyncExternalStore(subscribe, getState);

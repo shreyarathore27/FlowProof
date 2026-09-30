@@ -88,6 +88,15 @@ const paths: Record<string, ReactNode> = {
   account: <><circle cx="12" cy="8" r="4" /><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" /></>,
   desk: <><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 10h18M9 10v10" /></>,
   ledger: <><rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="14" width="7" height="7" rx="1.5" /><path d="M10 6.5h4a2 2 0 012 2V14" /></>,
+  sun: (
+    <>
+      <circle cx="12" cy="12" r="4.5" />
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+    </>
+  ),
+  moon: <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />,
+  play: <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" />,
+  pause: <><rect x="6" y="4" width="4" height="16" fill="currentColor" rx="1" /><rect x="14" y="4" width="4" height="16" fill="currentColor" rx="1" /></>,
 };
 export function Icon({ name }: { name: keyof typeof paths | string }) {
   return (
