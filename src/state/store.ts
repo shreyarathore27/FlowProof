@@ -5,7 +5,7 @@ import type {
 } from '../api/types';
 
 export type View = 'merchant' | 'lender';
-export type MerchantPage = 'consent' | 'signals' | 'options' | 'offer' | 'account' | 'ledger';
+export type MerchantPage = 'dashboard' | 'recommendations' | 'history' | 'verification' | 'consents' | 'consent' | 'signals' | 'options' | 'offer' | 'account' | 'ledger';
 export type LenderPage = 'desk' | 'ledger';
 
 export interface UserState {
@@ -81,7 +81,7 @@ export const initialState = (profiles: MerchantProfile[] = []): AppState => {
   applyThemeToDom(activeTheme);
   return {
     view: 'merchant',
-    pages: { merchant: 'consent', lender: 'desk' },
+    pages: { merchant: 'dashboard', lender: 'desk' },
     merchant: null,
     profiles,
     users: { ravi: freshUser(), meena: freshUser() },

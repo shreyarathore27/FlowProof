@@ -81,6 +81,8 @@ export function HashText({ value, animate }: { value: string; animate: boolean }
 
 const paths: Record<string, ReactNode> = {
   signin: <path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3" />,
+  chat: <><path d="M21 11.5a8.4 8.4 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.4 8.4 0 01-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.4 8.4 0 013.8-.9h.5a8.5 8.5 0 018 8z" /><path d="M8 12h.01M12 12h.01M16 12h.01" /></>,
+  close: <path d="m18 6-12 12M6 6l12 12" />,
   consent: <><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z" /><path d="M9 12l2 2 4-4" /></>,
   signals: <path d="M4 19V11M10 19V5M16 19v-7M22 19H2" />,
   options: <><rect x="3" y="4" width="18" height="6" rx="2" /><rect x="3" y="14" width="18" height="6" rx="2" /></>,

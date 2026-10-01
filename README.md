@@ -6,6 +6,18 @@
 
 ---
 
+## Live Financial Assistant
+
+The dashboard assistant uses Anthropic Claude through the backend. It does not return canned answers. Configure the key on the server only:
+
+1. Copy `.env.example` to `.env`.
+2. Set `ANTHROPIC_API_KEY` in `.env`. Never use a `VITE_` prefix for this secret.
+3. Start the backend with `npm run server` and the frontend with `npm run dev` in separate terminals.
+
+The assistant sends the selected synthetic dashboard summary and recent chat turns to Anthropic. Without a key, it shows a configuration message instead of pretending to be live. Real bank data is not connected to this demo assistant.
+
+---
+
 ## Overview
 
 Millions of small merchants transact digitally every day but remain **credit-invisible** to formal financial institutions.

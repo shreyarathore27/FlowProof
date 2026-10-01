@@ -221,5 +221,217 @@
     "prev": "fe591a93fb40d51340e59f618f6e4f98049b476966551b418ad09d05d839d016",
     "hash": "52b81cf132ba70500fc4cd75555be034e5afdda566d3877206af5c4f96ddc0c1",
     "txId": "52b81cf132"
+  },
+  {
+    "n": 12,
+    "fn": "FinancialCredentialCreated",
+    "status": "VALID",
+    "orgs": [
+      "PlatformOrg"
+    ],
+    "time": "2026-09-30T20:55:20.082Z",
+    "fields": {
+      "credentialId": "FC-2026-289E1E0877",
+      "organization": "Kosh Capital",
+      "purpose": "Business Working Capital assessment",
+      "scope": "monthlyInflow,monthlyOutflow,savingsRate,monthlySavings,cashFlowStability,financialHealth",
+      "credentialHash": "1b15c71db58d58dd7a56b08b2ea7c7521cc180d087daed4e38e6f749272a9c80",
+      "valuesStored": "off-chain"
+    },
+    "userId": "ravi",
+    "prev": "52b81cf132ba70500fc4cd75555be034e5afdda566d3877206af5c4f96ddc0c1",
+    "hash": "b263da13513f24bb3223135c6faabb095c46a6c344bb9bb345f975f9f04ba18b",
+    "txId": "b263da1351"
+  },
+  {
+    "n": 13,
+    "fn": "FinancialConsentRecorded",
+    "status": "VALID",
+    "orgs": [
+      "PlatformOrg"
+    ],
+    "time": "2026-09-30T20:55:20.082Z",
+    "fields": {
+      "credentialId": "FC-2026-289E1E0877",
+      "organization": "Kosh Capital",
+      "purpose": "Business Working Capital assessment",
+      "scope": "monthlyInflow,monthlyOutflow,savingsRate,monthlySavings,cashFlowStability,financialHealth",
+      "credentialHash": "1b15c71db58d58dd7a56b08b2ea7c7521cc180d087daed4e38e6f749272a9c80",
+      "valuesStored": "off-chain"
+    },
+    "userId": "ravi",
+    "prev": "b263da13513f24bb3223135c6faabb095c46a6c344bb9bb345f975f9f04ba18b",
+    "hash": "5b29384066b2643343c3866378dd35a092b4dfdb17b8ec89a1c631282e9b9b01",
+    "txId": "5b29384066"
+  },
+  {
+    "n": 14,
+    "fn": "FinancialShareRequestCreated",
+    "status": "VALID",
+    "orgs": [
+      "PlatformOrg",
+      "LenderOrg"
+    ],
+    "time": "2026-09-30T20:55:20.082Z",
+    "fields": {
+      "credentialId": "FC-2026-289E1E0877",
+      "organization": "Kosh Capital",
+      "purpose": "Business Working Capital assessment",
+      "scope": "monthlyInflow,monthlyOutflow,savingsRate,monthlySavings,cashFlowStability,financialHealth",
+      "credentialHash": "1b15c71db58d58dd7a56b08b2ea7c7521cc180d087daed4e38e6f749272a9c80",
+      "valuesStored": "off-chain"
+    },
+    "userId": "ravi",
+    "prev": "5b29384066b2643343c3866378dd35a092b4dfdb17b8ec89a1c631282e9b9b01",
+    "hash": "31b13dd921f7cf0ca1e2bb3877b1002d9a6c040811c71b11c6785cc40d79e30e",
+    "txId": "31b13dd921"
+  },
+  {
+    "n": 15,
+    "fn": "FinancialCredentialVerified",
+    "status": "VALID",
+    "orgs": [
+      "LenderOrg"
+    ],
+    "time": "2026-09-30T20:55:45.454Z",
+    "fields": {
+      "credentialId": "FC-2026-289E1E0877",
+      "organization": "Kosh Capital",
+      "purpose": "Business Working Capital assessment",
+      "scope": "monthlyInflow,monthlyOutflow,savingsRate,monthlySavings,cashFlowStability,financialHealth",
+      "credentialHash": "1b15c71db58d58dd7a56b08b2ea7c7521cc180d087daed4e38e6f749272a9c80",
+      "valuesStored": "off-chain"
+    },
+    "userId": "ravi",
+    "prev": "31b13dd921f7cf0ca1e2bb3877b1002d9a6c040811c71b11c6785cc40d79e30e",
+    "hash": "70a85f2f2aff33141628e13fd515cb03a14c50afaad2b221ac6a5aaceaf74447",
+    "txId": "70a85f2f2a"
+  },
+  {
+    "n": 16,
+    "fn": "OrganizationAssessmentStarted",
+    "status": "VALID",
+    "orgs": [
+      "LenderOrg"
+    ],
+    "time": "2026-09-30T20:55:45.454Z",
+    "fields": {
+      "credentialId": "FC-2026-289E1E0877",
+      "organization": "Kosh Capital",
+      "purpose": "Business Working Capital assessment",
+      "scope": "monthlyInflow,monthlyOutflow,savingsRate,monthlySavings,cashFlowStability,financialHealth",
+      "credentialHash": "1b15c71db58d58dd7a56b08b2ea7c7521cc180d087daed4e38e6f749272a9c80",
+      "valuesStored": "off-chain"
+    },
+    "userId": "ravi",
+    "prev": "70a85f2f2aff33141628e13fd515cb03a14c50afaad2b221ac6a5aaceaf74447",
+    "hash": "ef4823615256855b75e67860242c6cfebeb1fbda161414d96cdbfe556f49db18",
+    "txId": "ef48236152"
+  },
+  {
+    "n": 17,
+    "fn": "FinancialCredentialCreated",
+    "status": "VALID",
+    "orgs": [
+      "PlatformOrg"
+    ],
+    "time": "2026-09-30T21:08:04.354Z",
+    "fields": {
+      "credentialId": "FC-2026-C46357D984",
+      "organization": "Astra Savings",
+      "purpose": "Emergency Fund assessment",
+      "scope": "monthlyInflow,monthlyOutflow,savingsRate,monthlySavings,cashFlowStability,financialHealth",
+      "credentialHash": "720c0cddc6778081ce7c039fd396666f962c7656c06d380c7852481b0ad00369",
+      "valuesStored": "off-chain"
+    },
+    "userId": "ravi",
+    "prev": "ef4823615256855b75e67860242c6cfebeb1fbda161414d96cdbfe556f49db18",
+    "hash": "c70ec2e3105a254fe80da504183b3fa939bb15a18e7cec12d8559e7a5f6bb148",
+    "txId": "c70ec2e310"
+  },
+  {
+    "n": 18,
+    "fn": "FinancialConsentRecorded",
+    "status": "VALID",
+    "orgs": [
+      "PlatformOrg"
+    ],
+    "time": "2026-09-30T21:08:04.354Z",
+    "fields": {
+      "credentialId": "FC-2026-C46357D984",
+      "organization": "Astra Savings",
+      "purpose": "Emergency Fund assessment",
+      "scope": "monthlyInflow,monthlyOutflow,savingsRate,monthlySavings,cashFlowStability,financialHealth",
+      "credentialHash": "720c0cddc6778081ce7c039fd396666f962c7656c06d380c7852481b0ad00369",
+      "valuesStored": "off-chain"
+    },
+    "userId": "ravi",
+    "prev": "c70ec2e3105a254fe80da504183b3fa939bb15a18e7cec12d8559e7a5f6bb148",
+    "hash": "28ccec933ecf913850550a1cc191dedf1115b272a43e0b8721699cefcb114886",
+    "txId": "28ccec933e"
+  },
+  {
+    "n": 19,
+    "fn": "FinancialShareRequestCreated",
+    "status": "VALID",
+    "orgs": [
+      "PlatformOrg",
+      "LenderOrg"
+    ],
+    "time": "2026-09-30T21:08:04.354Z",
+    "fields": {
+      "credentialId": "FC-2026-C46357D984",
+      "organization": "Astra Savings",
+      "purpose": "Emergency Fund assessment",
+      "scope": "monthlyInflow,monthlyOutflow,savingsRate,monthlySavings,cashFlowStability,financialHealth",
+      "credentialHash": "720c0cddc6778081ce7c039fd396666f962c7656c06d380c7852481b0ad00369",
+      "valuesStored": "off-chain"
+    },
+    "userId": "ravi",
+    "prev": "28ccec933ecf913850550a1cc191dedf1115b272a43e0b8721699cefcb114886",
+    "hash": "5eaa9e8ccb45f96d486c185849c772de2e6daf18aa6bb5471f4119991be89778",
+    "txId": "5eaa9e8ccb"
+  },
+  {
+    "n": 20,
+    "fn": "FinancialCredentialVerified",
+    "status": "VALID",
+    "orgs": [
+      "LenderOrg"
+    ],
+    "time": "2026-09-30T21:08:16.455Z",
+    "fields": {
+      "credentialId": "FC-2026-C46357D984",
+      "organization": "Astra Savings",
+      "purpose": "Emergency Fund assessment",
+      "scope": "monthlyInflow,monthlyOutflow,savingsRate,monthlySavings,cashFlowStability,financialHealth",
+      "credentialHash": "720c0cddc6778081ce7c039fd396666f962c7656c06d380c7852481b0ad00369",
+      "valuesStored": "off-chain"
+    },
+    "userId": "ravi",
+    "prev": "5eaa9e8ccb45f96d486c185849c772de2e6daf18aa6bb5471f4119991be89778",
+    "hash": "c9d596f89f8d7c38c3e79064848c3db67c14602ad119dc17fe0366a308651823",
+    "txId": "c9d596f89f"
+  },
+  {
+    "n": 21,
+    "fn": "OrganizationAssessmentStarted",
+    "status": "VALID",
+    "orgs": [
+      "LenderOrg"
+    ],
+    "time": "2026-09-30T21:08:16.455Z",
+    "fields": {
+      "credentialId": "FC-2026-C46357D984",
+      "organization": "Astra Savings",
+      "purpose": "Emergency Fund assessment",
+      "scope": "monthlyInflow,monthlyOutflow,savingsRate,monthlySavings,cashFlowStability,financialHealth",
+      "credentialHash": "720c0cddc6778081ce7c039fd396666f962c7656c06d380c7852481b0ad00369",
+      "valuesStored": "off-chain"
+    },
+    "userId": "ravi",
+    "prev": "c9d596f89f8d7c38c3e79064848c3db67c14602ad119dc17fe0366a308651823",
+    "hash": "edf05e2d14a8741c3b7e69b08889a47200fc76d3b4266251efc4f2dfb74d2e26",
+    "txId": "edf05e2d14"
   }
 ]
