@@ -24,6 +24,13 @@ export type OrgId = 'PlatformOrg' | 'VerifierOrg' | 'LenderOrg';
 export type LedgerStatus = 'VALID' | 'ALLOWED' | 'REFUSED' | 'FAILED';
 export type Purpose = 'credit-assessment' | 'marketing';
 export type UserId = 'ravi' | 'meena';
+export type FinancialWorkflowEvent =
+  | 'FinancialCredentialCreated'
+  | 'FinancialConsentRecorded'
+  | 'FinancialShareRequestCreated'
+  | 'FinancialCredentialVerified'
+  | 'OrganizationAssessmentStarted'
+  | 'FinancialConsentRevoked';
 
 export interface LedgerEvent {
   n: number;
@@ -176,6 +183,15 @@ export interface Ledger {
   recordRepayment(
     callerOrg: OrgId,
     params: { agreementId: string; mandateRef: string; cycle: number; result: 'SUCCESS' | 'FAILED'; reason?: string },
+    userId: UserId,
+    now: Date
+  ): Promise<LedgerEvent>;
+
+  /** Record credential workflow metadata only; metric values stay off-chain. */
+  recordFinancialWorkflowEvent(
+    callerOrg: OrgId,
+    event: FinancialWorkflowEvent,
+    params: { credentialId: string; organization: string; purpose: string; scope: string[]; credentialHash: string },
     userId: UserId,
     now: Date
   ): Promise<LedgerEvent>;
@@ -441,6 +457,34 @@ export class SimulatedLedger implements Ledger {
     };
     const status: LedgerStatus = params.result === 'FAILED' ? 'FAILED' : 'VALID';
     return this.append('RecordRepayment', ['PlatformOrg'], fields, status, params.reason, userId, now);
+  }
+
+  async recordFinancialWorkflowEvent(
+    callerOrg: OrgId,
+    event: FinancialWorkflowEvent,
+    params: { credentialId: string; organization: string; purpose: string; scope: string[]; credentialHash: string },
+    userId: UserId,
+    now: Date
+  ): Promise<LedgerEvent> {
+    const platformEvents: FinancialWorkflowEvent[] = [
+      'FinancialCredentialCreated', 'FinancialConsentRecorded', 'FinancialShareRequestCreated', 'FinancialConsentRevoked',
+    ];
+    const organizationEvents: FinancialWorkflowEvent[] = ['FinancialCredentialVerified', 'OrganizationAssessmentStarted'];
+    if (platformEvents.includes(event) && callerOrg !== 'PlatformOrg') throw new Error(`${event} requires PlatformOrg`);
+    if (organizationEvents.includes(event) && callerOrg !== 'LenderOrg') throw new Error(`${event} requires LenderOrg`);
+
+    const orgs: OrgId[] = callerOrg === 'PlatformOrg' && event === 'FinancialShareRequestCreated'
+      ? ['PlatformOrg', 'LenderOrg']
+      : [callerOrg];
+    const fields = {
+      credentialId: params.credentialId,
+      organization: params.organization,
+      purpose: params.purpose,
+      scope: params.scope.join(','),
+      credentialHash: params.credentialHash,
+      valuesStored: 'off-chain',
+    };
+    return this.append(event, orgs, fields, 'VALID', undefined, userId, now);
   }
 
   async getHistory(consentId: 'all' | string): Promise<LedgerEvent[]> {
